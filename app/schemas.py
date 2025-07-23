@@ -1,10 +1,10 @@
 from pydantic import BaseModel, Field, ConfigDict
 
 class BookBase(BaseModel):
-    title: str = Field(..., example="The Odyssey")
-    author: str = Field(..., example="Homer")
-    published_year: int = Field(..., ge=0, le=2100, example=800)
-    summary: str | None = Field(None, example="An epic poem...")
+    title: str
+    author: str
+    published_year: int
+    summary: str
 
 class BookCreate(BookBase):
     pass
