@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 class BookBase(BaseModel):
     title: str = Field(..., example="The Odyssey")
@@ -17,6 +17,9 @@ class BookUpdate(BaseModel):
 
 class Book(BookBase):
     id: int
+    title: str
+    author: str
+    published_year: int
+    summary: str | None = None
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
